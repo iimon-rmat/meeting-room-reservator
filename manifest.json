@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "会議室予約ツール",
+  "version": "1.0.0",
+  "description": "Googleカレンダーから会議室の予約状況を確認し、空いている時間帯を検索できるツール",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://calendar.google.com/*",
+    "https://*.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "会議室予約ツール"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://calendar.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["config/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+} 
